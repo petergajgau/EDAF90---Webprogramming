@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import ProteinCheckbox from './ProteinCheckbox';
 import ExtrasCheckbox from './ExtrasCheckbox';
+import {withRouter} from 'react-router-dom'
 
 class ComposeSalad extends Component {
   constructor(props) {
@@ -59,9 +60,10 @@ class ComposeSalad extends Component {
 
   handleSubmit(e){
     e.preventDefault();
-    this.props.onSubmit(this.state);
+    this.props.newSalad(this.state);
     //this.firstSelect.value = "";
     //this.secondSelect.value = "";
+    this.props.history.push('/viewOrder');
     this.setState({
       foundation: "",
       proteins: [],
@@ -76,8 +78,7 @@ class ComposeSalad extends Component {
     const proteins = Object.keys(inventory).filter(name => inventory[name].protein);
     const extras = Object.keys(inventory).filter(name => inventory[name].extra);
     const dressing = Object.keys(inventory).filter(name => inventory[name].dressing);
-    console.log(this.state)
-
+    console.log(this.state);
     return (
       <form onSubmit={this.handleSubmit}>
         <div className="container">
@@ -122,13 +123,15 @@ class ComposeSalad extends Component {
           <button type="submit" className="btn btn-primary" >
             Lägg till salad
           </button>
+          {/*
           <button className="btn btn-secondary ml-3 " data-dismiss="modal">
              Stäng fönstret
           </button>
+          */}
         </div>
       </form>
     );
   }
 }
 
-export default ComposeSalad;
+export default withRouter(ComposeSalad);
