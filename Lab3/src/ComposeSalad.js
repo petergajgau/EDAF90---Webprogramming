@@ -28,6 +28,7 @@ class ComposeSalad extends Component {
     } else if (type === "dressing") {
       this.setState({ dressing: value });
     }
+    e.target.parentElement.classList.add("was-validated");
   }
   
   handleCheckboxes(e) {
@@ -55,21 +56,23 @@ class ComposeSalad extends Component {
           this.setState(this.state.extras.splice(index, 1));
       }
     }
-
+    e.target.parentElement.classList.add("was-validated");
   }
 
   handleSubmit(e){
     e.preventDefault();
-    this.props.newSalad(this.state);
-    //this.firstSelect.value = "";
-    //this.secondSelect.value = "";
-    this.props.history.push('/viewOrder');
-    this.setState({
-      foundation: "",
-      proteins: [],
-      extras: [],
-      dressing: ""
-    });
+    e.target.classList.add("was-validated");
+    
+    if (e.target.checkValidity() === true) {
+      this.props.newSalad(this.state);
+      this.props.history.push('/viewOrder');
+      this.setState({
+        foundation: "",
+        proteins: [],
+        extras: [],
+        dressing: ""
+      });
+    }
   }
 
   render() {
@@ -80,15 +83,16 @@ class ComposeSalad extends Component {
     const dressing = Object.keys(inventory).filter(name => inventory[name].dressing);
     console.log(this.state);
     return (
-      <form onSubmit={this.handleSubmit}>
+      <form onSubmit={this.handleSubmit}  noValidate>
         <div className="container">
-          <h5>Välj bas</h5>
-          <div>
-            <select ref={(ref) => this.firstSelect = ref} className="form-control" name="foundation" onChange={this.handleSelection} value={this.state.foundation}>
-              <option hidden />
+          <div className="form-group">
+            <label htmlFor="foundationSelect"><h5>Välj bas</h5></label>
+            <select required className="form-control"  id="foundationSelect" name="foundation" onChange={this.handleSelection} value={this.state.foundation}>
+              <option value='' disabled>-- Välj en bas --</option>
               {foundations.map(name => <option key={name} value={name}>
                 {name} {"+"} {inventory[name].price} {"kr"}</option>)}
             </select>
+            <div className="invalid-feedback">Du måste välja en bas.</div>
           </div>
         </div>
         <br />
@@ -109,13 +113,14 @@ class ComposeSalad extends Component {
         </div>
         <br />
         <div className="container">
-          <h5>Välj dressing</h5>
           <div className="form-group">
-            <select ref={(ref) => this.secondSelect = ref} className="form-control" name="dressing" onChange={this.handleSelection} value={this.state.dressing}>
-              <option hidden />
+            <label htmlFor="dressingSelect"><h5>Välj dressing</h5></label>
+            <select required className="form-control" id="dressingSelect" name="dressing" onChange={this.handleSelection} value={this.state.dressing}>
+              <option value='' disabled>-- Välj en dressing --</option>
               {dressing.map(name => <option key={name} value={name}>
                 {name} {"+"} {inventory[name].price} {"kr"}</option>)}
             </select>
+            <div className="invalid-feedback">Du måste välja en dressing.</div>
           </div>
         </div>
         <br />
