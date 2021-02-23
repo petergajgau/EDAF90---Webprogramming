@@ -1,0 +1,11 @@
+.price {
+    font-weight: bold;
+    position: absolute;
+    right: 10px;
+}
+
+.clear {
+    margin-top: 10px;
+    position: absolute;
+    right: 15px;
+}
