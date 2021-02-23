@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import './App.css';
-import inventory from './inventory.ES6';
+//import inventory from './inventory.ES6';
 import ViewOrder from './ViewOrder'
 import ComposeSalad from './ComposeSalad';
 import { v4 as uuidv4 } from 'uuid';
@@ -10,7 +10,7 @@ import NotFound from './NotFound';
 class App extends Component {
   constructor(props) {
     super(props);
-    this.state = { salads: [] };
+    this.state = { salads: [] ,  inventory: {} };
 
     this.createSalad = this.createSalad.bind(this);
     this.removeOrder = this.removeOrder.bind(this)
@@ -27,10 +27,10 @@ class App extends Component {
 
   calculatePrice(e) {
     let price =
-      inventory[e.foundation].price +
-      inventory[e.dressing].price +
+      this.state.inventory[e.foundation].price +
+      this.state.inventory[e.dressing].price +
       e.proteins.concat(e.extras).reduce((sum, curr) => {
-        return sum + inventory[curr].price;
+        return sum + this.state.inventory[curr].price;
       }, 0);
 
     return price;
@@ -42,7 +42,7 @@ class App extends Component {
 
   render() {
     console.log(this.state)
-    const composeSalad = (...params) => <ComposeSalad inventory={inventory} newSalad={this.createSalad}/>
+    const composeSalad = (...params) => <ComposeSalad inventory={this.state.inventory} newSalad={this.createSalad}/>
     const viewOrder= (...params) => <ViewOrder order={this.state.salads} handleClear={this.removeOrder}/>
     return (
       <Router>
