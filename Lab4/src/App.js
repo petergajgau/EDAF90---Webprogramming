@@ -16,6 +16,20 @@ class App extends Component {
     this.removeOrder = this.removeOrder.bind(this)
   }
 
+  componentDidMount() {
+    let inventory = {};
+    let baseURL = 'http://localhost:8080/';
+    let typeURLS = ['foundations', 'proteins', 'extras', 'dressings'];
+
+    Promise.all(typeURLS.map(typeURL => {
+      return fetch(baseURL + typeURL)
+        .then(response => response.json())
+        .then(items => {
+          
+        })
+    }))
+  }
+
   createSalad(e) {
     console.log("app fick", e);
     let temp = { ...e };
