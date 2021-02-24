@@ -13,7 +13,8 @@ class App extends Component {
     this.state = { salads: [] ,  inventory: {} };
 
     this.createSalad = this.createSalad.bind(this);
-    this.removeOrder = this.removeOrder.bind(this)
+    this.removeOrder = this.removeOrder.bind(this);
+    this.placeOrder = this.placeOrder.bind(this);
   }
 
   componentDidMount() {
@@ -25,9 +26,15 @@ class App extends Component {
       return fetch(baseURL + typeURL)
         .then(response => response.json())
         .then(items => {
-          
+          return Promise.all(items.map(item => {
+            return fetch(baseURL + typeURL + '/' + item)
+              .then(response => response.json())
+              .then(data => inventory[item] = data)
+          }))
         })
     }))
+      .then(() => this.setState({inventory}));
+      console.log(inventory);
   }
 
   createSalad(e) {
@@ -54,10 +61,23 @@ class App extends Component {
     this.setState({ salads: [] })
   }
 
+  placeOrder(){
+    let options = {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(this.state.salads)
+    };
+    fetch('http://localhost:8080/orders/', options);
+
+    this.setState({ salads: [] })
+  }
+
   render() {
     console.log(this.state)
     const composeSalad = (...params) => <ComposeSalad inventory={this.state.inventory} newSalad={this.createSalad}/>
-    const viewOrder= (...params) => <ViewOrder order={this.state.salads} handleClear={this.removeOrder}/>
+    const viewOrder= (...params) => <ViewOrder order={this.state.salads} handleClear={this.removeOrder} placeOrder={this.placeOrder}/>
     return (
       <Router>
         <div>
