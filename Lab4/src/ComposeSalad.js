@@ -21,7 +21,6 @@ class ComposeSalad extends Component {
   handleSelection(e) {
     let type = e.target.name;
     let value = e.target.value;
-    console.log(type)
 
     if (type === "foundation") {
       this.setState({ foundation: value });
@@ -34,8 +33,6 @@ class ComposeSalad extends Component {
   handleCheckboxes(e) {
     let type = e.target.name;
     let value = e.target.value;
-    console.log(type)
-    console.log(e.target.checked)
 
     if (type === "protein") {
       if (e.target.checked) {
@@ -81,7 +78,7 @@ class ComposeSalad extends Component {
     const proteins = Object.keys(inventory).filter(name => inventory[name].protein);
     const extras = Object.keys(inventory).filter(name => inventory[name].extra);
     const dressing = Object.keys(inventory).filter(name => inventory[name].dressing);
-    console.log(this.state);
+    
     return (
       <form onSubmit={this.handleSubmit}  noValidate>
         <div className="container">

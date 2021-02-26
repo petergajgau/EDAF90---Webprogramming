@@ -18,6 +18,11 @@ class App extends Component {
   }
 
   componentDidMount() {
+    let saladOrder = JSON.parse(localStorage.getItem('saladOrders'))
+    if (saladOrder != null) {
+      this.setState({ salads: saladOrder })
+    }
+
     let inventory = {};
     let baseURL = 'http://localhost:8080/';
     let typeURLS = ['foundations', 'proteins', 'extras', 'dressings'];
@@ -42,8 +47,10 @@ class App extends Component {
     let temp = { ...e };
     temp.id = uuidv4();
     temp.price = this.calculatePrice(e);
-    const salad = [...this.state.salads, temp];
-    this.setState({ salads: salad })
+    //const salad = [...this.state.salads, temp];
+    this.setState({ salads: [...this.state.salads, temp] }, () =>
+      {window.localStorage.setItem('salads', JSON.stringify(this.state.salads))}
+    ); 
   }
 
   calculatePrice(e) {
@@ -75,7 +82,13 @@ class App extends Component {
   }
 
   render() {
-    console.log(this.state)
+
+    console.log("local storage");
+    for (let i = 0; i < localStorage.length; i++)  {
+      console.log(localStorage.key(i) + "=[" + localStorage.getItem(localStorage.key(i)) + "]");
+    }
+
+
     const composeSalad = (...params) => <ComposeSalad inventory={this.state.inventory} newSalad={this.createSalad}/>
     const viewOrder= (...params) => <ViewOrder order={this.state.salads} handleClear={this.removeOrder} placeOrder={this.placeOrder}/>
     return (
