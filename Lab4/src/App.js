@@ -18,7 +18,7 @@ class App extends Component {
   }
 
   componentDidMount() {
-    let saladOrder = JSON.parse(localStorage.getItem('saladOrders'))
+    let saladOrder = JSON.parse(localStorage.getItem('salads'))
     if (saladOrder != null) {
       this.setState({ salads: saladOrder })
     }
@@ -47,9 +47,9 @@ class App extends Component {
     let temp = { ...e };
     temp.id = uuidv4();
     temp.price = this.calculatePrice(e);
-    //const salad = [...this.state.salads, temp];
-    this.setState({ salads: [...this.state.salads, temp] }, () =>
-      {window.localStorage.setItem('salads', JSON.stringify(this.state.salads))}
+    const salad = [...this.state.salads, temp];
+    this.setState({ salads: salad }, () =>
+      {window.localStorage.setItem('salads', JSON.stringify(salad))}
     ); 
   }
 
@@ -66,6 +66,7 @@ class App extends Component {
 
   removeOrder() {
     this.setState({ salads: [] })
+    localStorage.setItem("salads", JSON.stringify([]));
   }
 
   placeOrder(){
