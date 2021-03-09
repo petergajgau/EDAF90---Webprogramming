@@ -1,3 +1,16 @@
 <body>
-    <div *ngFor="let movie of movies">{{movie.title}}</div>
+    <div class="movie-container">
+        <div class="movie" *ngFor="let movie of movies">
+            <img src="{{'https://image.tmdb.org/t/p/w1280' + movie.poster_path}}" alt={{movie.title}} />
+            <div class="movie-info">
+                <h3>{{movie.title}}</h3>
+                <span>{{movie.vote_average}}</span>
+            </div>
+
+            <div class="movie-hover">
+                <h2>Overview:</h2>
+                <p>{{movie.overview}}</p>
+            </div>
+        </div>
+    </div>
 </body>
