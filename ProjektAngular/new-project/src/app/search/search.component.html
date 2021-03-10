@@ -1,5 +1,9 @@
 <div class="movie-search">
     <form #search="ngForm" (ngSubmit)="onClickSubmit(search)">
-        <input class="search" type="text" name="value" placeholder="Search..." ngModel/>
+        <input class="search-query" name="value" placeholder="Search..." ngModel/>
     </form>
+
+    <ul>
+        <li *ngFor="let movie of movies">{{movie.title}}</li>
+    </ul>
 </div>

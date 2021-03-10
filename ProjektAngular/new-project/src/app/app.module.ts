@@ -11,6 +11,7 @@ import { HomeComponent } from './home/home.component';
 import { SearchComponent } from './search/search.component';
 import { WatchlistComponent } from './watchlist/watchlist.component';
 import { FormsModule } from '@angular/forms';
+import {MovieServerClient} from "./services/movie.service.client"
 
 
 @NgModule({
@@ -29,7 +30,8 @@ import { FormsModule } from '@angular/forms';
     MatIconModule,
     FormsModule
   ],
-  providers: [],
+  providers: [MovieServerClient
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
