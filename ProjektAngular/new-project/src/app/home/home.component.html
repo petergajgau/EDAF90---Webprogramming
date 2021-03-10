@@ -1,7 +1,8 @@
 <body>
+    <div><h1 class=site-title>What's popular?</h1></div>
     <div class="movie-container">
         <div class="movie" *ngFor="let movie of movies">
-            <img src="{{'https://image.tmdb.org/t/p/w1280' + movie.poster_path}}" alt={{movie.title}} />
+            <img src="{{IMG_API + movie.poster_path}}" alt={{movie.title}} />
             <div class="movie-info">
                 <h3>{{movie.title}}</h3>
                 <span>{{movie.vote_average}}</span>

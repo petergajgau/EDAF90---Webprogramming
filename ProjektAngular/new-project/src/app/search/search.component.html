@@ -1,1 +1,5 @@
-<p>{{hello}}</p>
+<div class="movie-search">
+    <form #search="ngForm" (ngSubmit)="onClickSubmit(search)">
+        <input class="search" type="text" name="value" placeholder="Search..." ngModel/>
+    </form>
+</div>
