@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {MovieServerClient} from "../services/movie.service.client"
 
-const FEATURED_API = "https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=a2bacc0f7314337a9b607251ca77c2d1&query=";
-
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
