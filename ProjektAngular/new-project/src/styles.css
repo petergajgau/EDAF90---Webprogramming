@@ -8,3 +8,12 @@ body {
     background-color: #22254b;
     color: white;
 }
+
+.mat-menu-panel.mat-menu {
+    background:  #373b69;
+    color: white;
+}
+
+button.mat-menu-item{
+    color: white;
+}
