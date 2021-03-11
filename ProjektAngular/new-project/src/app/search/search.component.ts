@@ -7,7 +7,7 @@ import {MovieServerClient} from "../services/movie.service.client"
   styleUrls: ['./search.component.css']
 })
 export class SearchComponent implements OnInit {
-  IMG_API = 'https://image.tmdb.org/t/p/w1280/';
+  IMG_API = 'https://image.tmdb.org/t/p/w1280';
   movies = [];
 
   constructor(private movieService: MovieServerClient) { }
