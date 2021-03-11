@@ -32,6 +32,10 @@ export class MovieServerClient {
                 this.id = 35;
                 break;
             }
+            case 'crime' : {
+                this.id = 80;
+                break;
+            }
             case 'documentary' : {
                 this.id = 99;
                 break;
@@ -40,8 +44,16 @@ export class MovieServerClient {
                 this.id = 18;
                 break;
             }
+            case 'family' : {
+                this.id = 10751;
+                break;
+            }
             case 'fantasy' : {
                 this.id = 14;
+                break;
+            }
+            case 'history' : {
+                this.id = 36;
                 break;
             }
             case 'horror' : {

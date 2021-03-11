@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { MovieServerClient } from "./services/movie.service.client";
-import { GenresComponent } from './genres/genres.component'
 
 @Component({
   selector: 'app-root',
@@ -9,9 +8,6 @@ import { GenresComponent } from './genres/genres.component'
 })
 export class AppComponent {
   title = 'new-project';
-  private genreComponent: GenresComponent;
-
-  message = "";
 
   constructor(private movieService: MovieServerClient) { }
 
