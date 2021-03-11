@@ -1,12 +1,11 @@
 import { BehaviorSubject, Subject } from 'rxjs';
-import { GenresComponent } from '../genres/genres.component'
 
 const FEATURED_API = "https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=a2bacc0f7314337a9b607251ca77c2d1&query=";
 const SEARCH_API = "https://api.themoviedb.org/3/search/movie?api_key=a2bacc0f7314337a9b607251ca77c2d1&query=";
 const GENRE_API = "https://api.themoviedb.org/3/discover/movie?api_key=a2bacc0f7314337a9b607251ca77c2d1&sort_by=popularity.desc&include_adult=false&page=1&with_genres="
 
 export class MovieServerClient {
-    private genreComponent: GenresComponent;
+    
 
     message:string
     id:number
@@ -91,5 +90,4 @@ export class MovieServerClient {
         return fetch(SEARCH_API + data.value.value + '&page=1')
             .then(response => response.json());
     }
-
 }

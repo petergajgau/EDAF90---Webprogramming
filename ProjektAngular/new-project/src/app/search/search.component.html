@@ -9,7 +9,7 @@
         <img src="{{IMG_API + movie.poster_path}}" alt={{movie.title}} />
         <div class="movie-info">
             <h3>{{movie.title}}</h3>
-            <span>{{movie.vote_average}}</span>
+            <span class="setVote {{voteColor(movie.vote_average)}}">{{movie.vote_average}}</span>
         </div>
 
         <div class="movie-hover">

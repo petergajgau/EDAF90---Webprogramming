@@ -1,16 +1,20 @@
 <body>
-    <div><h1 class="site-title">What's popular?</h1></div>
-    <div class="movie-container">
-        <div class="movie" *ngFor="let movie of movies">
-            <img src="{{IMG_API + movie.poster_path}}" alt={{movie.title}} />
-            <div class="movie-info">
-                <h3>{{movie.title}}</h3>
-                <span>{{movie.vote_average}}</span>
-            </div>
+    <div class="main-div">
+        <div>
+            <h1 class="site-title">What's popular?</h1>
+        </div>
+        <div class="movie-container">
+            <div class="movie" *ngFor="let movie of movies">
+                <img src="{{IMG_API + movie.poster_path}}" alt={{movie.title}} />
+                <div class="movie-info">
+                    <h3>{{movie.title}}</h3>
+                    <span class="setVote {{voteColor(movie.vote_average)}}">{{movie.vote_average}}</span>
+                </div>
 
-            <div class="movie-hover">
-                <h2>Overview:</h2>
-                <p>{{movie.overview}}</p>
+                <div class="movie-hover">
+                    <h2>Overview:</h2>
+                    <p>{{movie.overview}}</p>
+                </div>
             </div>
         </div>
     </div>

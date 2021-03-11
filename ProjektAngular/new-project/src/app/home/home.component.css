@@ -1,8 +1,15 @@
+.main-div {
+    justify-content: center;
+}
+
 .site-title {
     font-weight: 500;
+    font-size: 30px;
     position: relative;
-    left: 1rem;
-    top: 1rem;
+    top: 1.5rem;
+    left: 8.5rem;
+    padding-bottom: 1.5rem;
+    padding-top: 0.5rem;
 }
 
 .movie {
@@ -21,6 +28,7 @@
 
 .movie-container {
     display: flex;
+    justify-content: center;
     flex-wrap: wrap;
 }
 

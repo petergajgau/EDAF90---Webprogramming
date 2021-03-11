@@ -1,10 +1,12 @@
 /* You can add global styles to this file, and also import other style files */
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;600&display=swap");
 
-html, body { height: 100%; }
+html, body { 
+    height: 100%; 
+    font-family: "Poppins", sans-serif;
+}
 body { 
     margin: 0; 
-    font-family: "Poppins", sans-serif;
     background-color: #22254b;
     color: white;
 }
@@ -18,6 +20,7 @@ body {
 
 button.mat-menu-item{
     color: white;
+    font-size: 105%;
 }
 
 .mat-menu-panel.mat-menu::-webkit-scrollbar {
@@ -28,4 +31,23 @@ button.mat-menu-item{
     border-radius: 10px;
     background-color: #7077c5;
     -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+}
+
+.setVote {
+    background-color: #22254b;
+    border-radius: 5px;
+    padding: 0.5rem;
+    font-weight: bold;
+}
+
+.setVote.green{
+    color: rgb(23, 153, 23);
+}
+
+.setVote.orange{
+    color: rgb(255, 183, 49);
+}
+
+.setVote.red{
+    color: rgb(255, 24, 24);
 }

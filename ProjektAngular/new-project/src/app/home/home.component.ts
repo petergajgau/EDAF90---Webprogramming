@@ -17,4 +17,13 @@ export class HomeComponent implements OnInit {
       .then(res => this.movies = res.results);
   }
 
+  voteColor(vote) {
+    if(vote >= 8) {
+      return "green";
+    } else if(vote >= 6) {
+      return "orange";
+    } else {
+      return "red";
+    }
+  }
 }

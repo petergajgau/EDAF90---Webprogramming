@@ -1,30 +1,30 @@
 <body>
+  <mat-toolbar style='font-size:150%' color="primary" class="mat-elevation-z6">
+    <span>
+      <mat-icon>movie</mat-icon>Movies4you
+    </span>
+    <div class="spacer"></div>
 
-<mat-toolbar color="primary" class="mat-elevation-z6">
-  <span> <mat-icon>movie</mat-icon>Movies4you</span>
-  <div class="spacer"></div>
+    <a mat-button style='font-size:80%' routerLink="home">Home</a>
+    <button mat-button style='font-size:80%' [matMenuTriggerFor]="menu">Genres</button>
+    <mat-menu #menu="matMenu" class="mat-menu" xPosition="after">
+      <button mat-menu-item routerLink="genres" (click)="onClick('action')">Action</button>
+      <button mat-menu-item routerLink="genres" (click)="onClick('adventure')">Adventure</button>
+      <button mat-menu-item routerLink="genres" (click)="onClick('comedy')">Comedy</button>
+      <button mat-menu-item routerLink="genres" (click)="onClick('crime')">Crime</button>
+      <button mat-menu-item routerLink="genres" (click)="onClick('documentary')">Documentary</button>
+      <button mat-menu-item routerLink="genres" (click)="onClick('drama')">Drama</button>
+      <button mat-menu-item routerLink="genres" (click)="onClick('family')">Family</button>
+      <button mat-menu-item routerLink="genres" (click)="onClick('fantasy')">Fantasy</button>
+      <button mat-menu-item routerLink="genres" (click)="onClick('history')">History</button>
+      <button mat-menu-item routerLink="genres" (click)="onClick('horror')">Horror</button>
+      <button mat-menu-item routerLink="genres" (click)="onClick('romance')">Romance</button>
+      <button mat-menu-item routerLink="genres" (click)="onClick('science fiction')">Science Fiction</button>
+      <button mat-menu-item routerLink="genres" (click)="onClick('thriller')">Thriller</button>
+    </mat-menu>
+    <a mat-button style='font-size:80%' routerLink="search">Search</a>
+    <a mat-button style='font-size:80%' routerLink="watchlist">Watchlist</a>
+  </mat-toolbar>
 
-  <a mat-button routerLink="home">Home</a>
-  <button mat-button [matMenuTriggerFor]="menu">Genres</button>
-  <mat-menu #menu="matMenu" class="mat-menu" xPosition="after">
-    <button mat-menu-item routerLink="genres" (click)="onClick('action')">Action</button>
-    <button mat-menu-item routerLink="genres" (click)="onClick('adventure')">Adventure</button>
-    <button mat-menu-item routerLink="genres" (click)="onClick('comedy')">Comedy</button>
-    <button mat-menu-item routerLink="genres" (click)="onClick('crime')">Crime</button>
-    <button mat-menu-item routerLink="genres" (click)="onClick('documentary')">Documentary</button>
-    <button mat-menu-item routerLink="genres" (click)="onClick('drama')">Drama</button>
-    <button mat-menu-item routerLink="genres" (click)="onClick('family')">Family</button>
-    <button mat-menu-item routerLink="genres" (click)="onClick('fantasy')">Fantasy</button>
-    <button mat-menu-item routerLink="genres" (click)="onClick('history')">History</button>
-    <button mat-menu-item routerLink="genres" (click)="onClick('horror')">Horror</button>
-    <button mat-menu-item routerLink="genres" (click)="onClick('romance')">Romance</button>
-    <button mat-menu-item routerLink="genres" (click)="onClick('science fiction')">Science Fiction</button>
-    <button mat-menu-item routerLink="genres" (click)="onClick('thriller')">Thriller</button>
-  </mat-menu>
-  <a mat-button routerLink="search">Search</a>
-  <a mat-button routerLink="watchlist">My Watchlist</a>
-</mat-toolbar>
-
-<router-outlet></router-outlet>
-
+  <router-outlet></router-outlet>
 </body>
