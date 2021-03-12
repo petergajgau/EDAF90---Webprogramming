@@ -21,6 +21,10 @@ export class SearchComponent implements OnInit {
     data.reset();
   }
 
+  likes(movie: any){
+    this.movieService.setLikes(movie);
+  }
+
   voteColor(vote) {
     if(vote >= 8) {
       return "green";

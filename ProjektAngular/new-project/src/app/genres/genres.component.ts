@@ -25,6 +25,10 @@ export class GenresComponent implements OnInit {
     );
   }
 
+  likes(movie: any){
+    this.movieService.setLikes(movie);
+  }
+
   voteColor(vote) {
     if(vote >= 8) {
       return "green";

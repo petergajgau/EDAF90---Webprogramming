@@ -28,4 +28,14 @@ export class WatchlistComponent implements OnInit {
     this.setMyWatchList();
   }
 
+  voteColor(vote) {
+    if(vote >= 8) {
+      return "green";
+    } else if(vote >= 6) {
+      return "orange";
+    } else {
+      return "red";
+    }
+  }
+
 }
