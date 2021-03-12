@@ -17,6 +17,10 @@ export class HomeComponent implements OnInit {
       .then(res => this.movies = res.results);
   }
 
+  likes(movie: any){
+    this.movieService.setLikes(movie);
+  }
+
   voteColor(vote) {
     if(vote >= 8) {
       return "green";

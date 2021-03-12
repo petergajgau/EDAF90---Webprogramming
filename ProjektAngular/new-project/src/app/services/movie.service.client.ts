@@ -6,6 +6,8 @@ const GENRE_API = "https://api.themoviedb.org/3/discover/movie?api_key=a2bacc0f7
 
 export class MovieServerClient {
     
+    data: any;
+    myset = new Set();
 
     message:string
     id:number
@@ -89,5 +91,20 @@ export class MovieServerClient {
     findMoviesByTitle(data) {
         return fetch(SEARCH_API + data.value.value + '&page=1')
             .then(response => response.json());
+    }
+
+    setLikes(movie: any) {
+        this.data = {
+            title: movie.title,
+            id: movie.id,
+            poster: movie.poster_path,
+            overview: movie.overview,
+            rating: movie.vote_average,
+        };
+        this.myset.add(JSON.stringify(this.data));
+    }
+
+    getLikes() {
+        return this.myset;
     }
 }

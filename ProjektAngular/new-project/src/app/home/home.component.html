@@ -15,6 +15,7 @@
                     <span class="setVote {{voteColor(movie.vote_average)}}">{{movie.vote_average}}</span>
                 </div>
                 <div class="movie-hover">
+                    <button (click)="likes(movie)" style="float: right" mat-flat-button color="accent">Add to watchlist</button>
                     <h2>Overview:</h2>
                     <p>{{movie.overview}}</p>
                 </div>

@@ -1,1 +1,21 @@
-<p>watchlist works!</p>
+<body>
+    <h1 class="a">My Watchlist</h1>
+
+    <div class="movie-container">
+        <div class="movie" *ngFor="let movie of formattedSet">
+            <img src="{{IMG_API + movie.poster}}" alt={{movie.title}} />
+            <div class="movie-info">
+                <h3>{{movie.title}}</h3>
+                <span>{{movie.vote_average}}</span>
+            </div>
+
+            <div class="movie-hover">
+                <button (click)="likes(movie)" style="float: right" mat-flat-button color="accent">Delete from watchlist</button>
+                <p></p>
+                <h2>Overview: ({{movie.title}})</h2>
+                <p>{{movie.overview}}</p>
+            </div>
+        </div>
+    </div>
+    
+</body>
