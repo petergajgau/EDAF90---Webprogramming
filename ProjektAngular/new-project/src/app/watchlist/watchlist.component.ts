@@ -22,10 +22,19 @@ export class WatchlistComponent implements OnInit {
       else if (typeof item === 'object') return item;
     });
     console.log(this.formattedSet)
+    console.log(this.formattedSet.size)
   }
 
   ngOnInit(): void {
     this.setMyWatchList();
+    this.movieService.customObservable.subscribe((res) => {//This runs all the time and when something changes it loads new data
+      this.setMyWatchList();
+    }
+    );
+  }
+
+  dislike(movie: any){
+    this.movieService.removeLike(movie);
   }
 
   voteColor(vote) {
@@ -37,5 +46,4 @@ export class WatchlistComponent implements OnInit {
       return "red";
     }
   }
-
 }

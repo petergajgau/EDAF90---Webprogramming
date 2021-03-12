@@ -1,4 +1,4 @@
-import { BehaviorSubject, Subject } from 'rxjs';
+import { Subject } from 'rxjs';
 
 const FEATURED_API = "https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=a2bacc0f7314337a9b607251ca77c2d1&query=";
 const SEARCH_API = "https://api.themoviedb.org/3/search/movie?api_key=a2bacc0f7314337a9b607251ca77c2d1&query=";
@@ -104,7 +104,12 @@ export class MovieServerClient {
         this.myset.add(JSON.stringify(this.data));
     }
 
-    getLikes() {
+    removeLike(movie) {
+        this.myset.delete(JSON.stringify(movie))
+        this.customSubject.next();
+    }
+
+    getLikes(){
         return this.myset;
     }
 }
