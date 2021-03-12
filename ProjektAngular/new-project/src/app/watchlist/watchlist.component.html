@@ -8,9 +8,10 @@
             </div>
 
             <div class="movie-hover">
-                <button (click)="likes(movie)" style="float: right" mat-flat-button color="accent">Delete from watchlist</button>
-                <p></p>
-                <h2>Overview: ({{movie.title}})</h2>
+                <button (click)="likes(movie)" mat-icon-button color="success" style="float: right" aria-label="Example icon-button with a heart icon">
+                    <mat-icon>delete</mat-icon>
+                </button>
+                <h2>Overview:</h2>
                 <p>{{movie.overview}}</p>
             </div>
         </div>

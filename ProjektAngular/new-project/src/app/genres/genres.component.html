@@ -12,7 +12,9 @@
             </div>
 
             <div class="movie-hover">
-                <button (click)="likes(movie)" style="float: right" mat-flat-button color="accent">Add to watchlist</button>
+                <button (click)="likes(movie)" mat-icon-button color="warn" style="float: right" aria-label="Example icon-button with a heart icon">
+                    <mat-icon>favorite</mat-icon>
+                </button>
                 <h2>Overview:</h2>
                 <p>{{movie.overview}}</p>
             </div>
